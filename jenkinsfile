@@ -36,7 +36,7 @@ pipeline{
                     deployerId: 'deployer'
                 )
                 rtPublishBuiildInfo(
-                    serverId: 'Exam_NAGP_DevTesOps@artifactory',
+                    serverId: 'Exam_NAGP_DevTestOps@artifactory',
                 )
             }
         }
