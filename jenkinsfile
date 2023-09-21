@@ -4,7 +4,7 @@ pipeline{
         notifyEmail = "alpana@nagarro.com"
     }
     triggers {
-        cron('0 06 * * *')
+        cron('H 06 * * *')
     }
     stages{
         stage("Code Checkout"){
