@@ -23,7 +23,7 @@ pipeline{
             }
         }
         stage("Publish to Artifactory"){
-            Steps{
+            steps{
                 rtMavenDeployer(
                     id: 'deployer',
                     serverId: 'Exam_NAGP_DevTesOps@artifactory',
