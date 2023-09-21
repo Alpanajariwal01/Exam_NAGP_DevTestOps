@@ -1,0 +1,49 @@
+pipeline{
+    agent any
+    environment{
+        notifyEmail = "alpana@nagarro.com"
+    }
+    triggers {
+        cron('0 06 * * *')
+    }
+    stages{
+        stage("Code Checkout"){
+            steps{
+                bat "echo checkout"
+            }
+        }
+        stage("Code test"){
+            steps{
+                bat "echo test"
+            }
+        }
+        stage("Code deploeyd"){
+            steps{
+                bat "echo deployed"
+            }
+        }
+        stage("Publish to Artifactory"){
+            Steps{
+                rtMavenDeployer(
+                    id: 'deployer',
+                    serverId: 'Exam_NAGP_DevTesOps@artifactory',
+                    releaseRepo: 'Exam_NAGP_DevTesOps',
+                    snapshotRepo: 'Exam_NAGP_DevTesOps'
+                )
+                rtMavenRun(
+                    pom: 'pom.xml',
+                    goals: 'clean install',
+                    deploeyerId: 'deployer'
+                )
+                rtPublishBuiildInfo(
+                    serverId: 'Exam_NAGP_DevTesOps@artifactory',
+                )
+            }
+        }
+    }
+    post{
+        success{
+            bat "echo success"
+        }
+    }
+}    
