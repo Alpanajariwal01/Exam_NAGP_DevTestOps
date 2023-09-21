@@ -26,7 +26,7 @@ pipeline{
             steps{
                 rtMavenDeployer(
                     id: 'deployer',
-                    serverId: 'Exam_NAGP_DevTesOps@artifactory',
+                    serverId: 'Exam_NAGP_DevTestOps@artifactory',
                     releaseRepo: 'Exam_NAGP_DevTesOps',
                     snapshotRepo: 'Exam_NAGP_DevTesOps'
                 )
